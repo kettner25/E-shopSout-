@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["Style"] = "kosik";
+
+    List<string> polozky = new List<string>();
+
+    List<Soutez.Models.Polozka> _polozky = ViewBag.Polozky;
+
+    foreach(string pol in ViewBag.Data as string[])
+    {
+        if (polozky.Where(p => p == pol).FirstOrDefault() == null)
+            polozky.Add(pol);
+    }
+}
+
+<div>
+    <div>
+        <a href="/Home/Index">Váš E-shop</a> -
+        <span>@ViewBag.Loc[ViewBag.Loc.Length - 1]</span>
+    </div>
+    <h1>Košík</h1>
+
+    <div>
+        @foreach (string pol in polozky) {
+            Soutez.Models.Polozka polozka = _polozky.Where(p => p.ID + "" == pol).FirstOrDefault();
+
+            int pocet = 0;
+
+            if (polozka != null)
+            {
+                foreach (string i in ViewBag.Data)
+                {
+                    if (polozka.ID + "" == i)
+                        pocet++;
+                }
+
+            <div class="item">
+                <img src="@polozka.UrlImg"/>
+                <div>
+                    @polozka.Jmeno <br />
+                    @polozka.Code
+                </div>
+                <div>
+                    @(polozka.Dostupnost > 0 ? "Dostupne" : "Nedostupne") <br />
+                    @polozka.Dostupnost ks
+                </div>
+                <div>
+                    Cena 1/ks: @polozka.Cena kč<br />
+                    Cena za @pocet ks: @(polozka.Cena * pocet) kč
+                </div>
+            </div>
+            }
+        }
+    </div>
+</div>

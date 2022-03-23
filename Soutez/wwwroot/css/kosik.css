@@ -1,0 +1,14 @@
+.item {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin: 15px 0;
+    padding: 15px 0;
+    border-bottom: gray solid 2px;
+}
+.item img {
+    height: 50px;
+}
+.item > div:last-child{
+    text-align: right;
+}

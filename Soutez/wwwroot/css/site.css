@@ -1,0 +1,53 @@
+﻿
+nav {
+  display: grid;
+  grid-template-columns: 150px 1fr 200px;
+
+}
+nav img {
+  height: 45px;
+}
+nav * {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav > *:nth-child(2){
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+nav > *:nth-child(2) * {
+  display: block;
+  text-align: center;
+}
+
+nav > *:last-child {
+  justify-content: end;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+}
+#logo {
+  height: 30px;
+}
+
+#kosik img {
+  padding-left: 8px;
+}
+
+#container {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+main > div > div:first-child {
+  padding: 15px 0;
+}
+
+@media screen and (max-width: 1300px){
+    #container{
+      width: 100%;
+    }
+}

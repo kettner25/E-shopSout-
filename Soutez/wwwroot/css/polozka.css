@@ -1,0 +1,81 @@
+:root {
+    --barva: rgb(196, 226, 255);
+    --barvaH: rgb(157, 199, 241);
+}
+
+.polozka {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid gray;
+
+    width: 300px;
+    display: inline-block;
+}
+.polozka > img {
+    width: calc(100% + 10px);
+    height: 200px;
+    object-fit: cover;
+
+    margin: -5px;
+}
+.polozka h3 {
+    margin: 0;
+    margin-top: 8px;
+    font-size: 22px;
+}
+.polozka p {
+    margin: 8px 0;
+
+    padding-bottom: 8px;
+    border-bottom: 2px gray solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 120px;
+}
+.polozka > div:nth-child(3) {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+}
+
+.polozka a {
+    width: 120px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: var(--barva);
+    outline: none;
+    border: gray 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-weight: bold;
+}
+.polozka a:hover {
+    background-color: var(--barvaH);
+}
+.polozka a img {
+    max-height: 25px;
+}
+.cena {
+    display: flex;
+    align-items: center;
+
+    font-size: 19px;
+    font-weight: bold;
+}
+.cena::after {
+    content: " kč,-";
+}
+
+@media screen and (max-width:700px) {
+    .polozka {
+        width: 45%;
+    }
+}
+@media screen and (max-width:550px) {
+    .polozka {
+        width: 95%;
+    }
+}

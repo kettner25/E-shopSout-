@@ -1,0 +1,36 @@
+﻿@using System
+@{ 
+    ViewData["Title"] = "Home Page";
+    ViewData["Style"] = "kategorie";
+}
+
+<div>
+    <div>
+        <a href="/Home/Index">Váš E-shop</a> -
+        <span>@ViewBag.Loc[ViewBag.Loc.Length - 1]</span>
+    </div>
+    <h1>@ViewBag.Loc[ViewBag.Loc.Length - 1]</h1>
+    <div id="kategorie">
+        <h3>Seřadit: </h3>
+        <button class="kat" name="levny">Nejlevnější</button>
+        <button class="kat" name="drahy">Nejdražší</button>
+    </div>
+    <div id="content">
+        @foreach (Soutez.Models.Polozka polozka in ViewBag.Data as List<Soutez.Models.Polozka>)
+        {
+            <div class="polozka">
+                <img src="@polozka.UrlImg" alt="Obrázek">
+                <div>
+                    <h3>@polozka.Jmeno</h3>
+                    <span>@(polozka.Dostupnost > 0 ? "Dostupné" : "Nedostupné")</span>
+                    <p>@polozka.Popis.Split(">", 2)[1].Split("</p>")[0]</p>
+                </div>
+                <div>
+                    <span class="cena">@polozka.Cena</span>
+                    <a href="/Site/PolozkaDetail?kategorie=@polozka.Kategorie&polozka=@polozka.ID">Koupit <img src="~/img/kosik.png" alt=""></a>
+                </div>
+            </div>
+        }
+    </div>
+    <script src="/js/filter.js"></script>
+</div>

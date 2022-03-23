@@ -1,0 +1,12 @@
+﻿@import url(polozka.css);
+
+#kategorie {
+    display: flex;
+    justify-content: space-around;
+
+    align-items: center;
+    border-bottom: 2px gray solid;
+}
+#kategorie button {
+    height: 30px;
+}

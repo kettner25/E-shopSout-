@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["Style"] = "detail";
+}
+
+<div id="detail">
+    <div>
+        <a href="/Home/Index">Váš E-shop</a> -
+        @for (int i = 0; i < ViewBag.Loc.Length - 1; i++)
+        {
+            string odkaz = ViewBag.Loc[i];
+            <a href="/Site/Kategorie?kategorie=@odkaz">@odkaz</a> @:-
+        }
+        <span>@ViewBag.Loc[ViewBag.Loc.Length - 1]</span>
+    </div>
+    <div>
+        <h1>@ViewBag.Data.Jmeno</h1>
+
+        <span>Cena: @ViewBag.Data.Cena</span>
+
+        <span>Kód: @ViewBag.Data.Code</span>
+
+        <span>@(ViewBag.Data.Dostupnost > 0 ? "Dostupné" : "Nedostupné") - @ViewBag.Data.Dostupnost ks</span>
+
+        <button name="koupit">Koupit</button>
+    </div>
+    <div>
+        <img src="@ViewBag.Data.UrlImg" alt="Alternate Text" />
+        <div>
+            <h3>Popis:</h3>
+            <p>@ViewBag.Data.Popis.Split(">", 2)[1].Split("</p>")[0]</p>
+        </div>
+    </div>
+    <script>const _id=@ViewBag.Data.ID</script>
+    <script src="~/js/koupit.js"></script>
+
+</div>

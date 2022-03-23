@@ -1,0 +1,44 @@
+﻿@using Soutez;
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Soutez</title>
+
+    <link rel="stylesheet" href="~/css/@(ViewData["Style"]).css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <div>
+                    <a href="/Home/Index"><img src="~/img/logo.png" alt="Logo" id="logo" /> Váš e-shop</a>
+                </div>
+                <div>
+                    @foreach(string kategorie in Data.VratKategorie())
+                    {
+                        <a href="/Site/Kategorie?kategorie=@kategorie">@kategorie</a>
+                    }
+                </div>
+                <a href="/Site/Kosik" id="kosik"><span>Cena: @ViewBag.Kosik[1] kč</span> - <span>@ViewBag.Kosik[0] ks</span> <img src="~/img/kosik.png" alt="kosik"></a>
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2022 - Soutez - Luboš Kettner
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    </div>
+</body>
+</html>
